@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-09-20T18:31:51",
+  "extra": {
+    "notes": "仅校验"
+  },
+  "migrate": [],
+  "validate": [
+    {
+      "table": "products",
+      "source_count": 4,
+      "target_count": 4,
+      "count_match": true,
+      "source_checksum": "c96de6d5114f1f92",
+      "target_checksum": "29c5a06b76803edf",
+      "checksum_match": false,
+      "sample_checked": 4,
+      "sample_mismatches": [
+        {
+          "key": "id=10001",
+          "source": "10001|SKU-A|入门套件|基础款|99.90|40.123456",
+          "target": "10001|SKU-A|入门套件|基础款|99.91|40.123456"
+        }
+      ],
+      "passed": false,
+      "error": null
+    },
+    {
+      "table": "edge_nulls",
+      "source_count": 4,
+      "target_count": 3,
+      "count_match": false,
+      "source_checksum": "e63c404965ec726f",
+      "target_checksum": "9bad15f550e3af58",
+      "checksum_match": false,
+      "sample_checked": 4,
+      "sample_mismatches": [
+        {
+          "key": "id=1",
+          "source": "1|\\N|\\N|\\N|\\N",
+          "target": "<missing>"
+        }
+      ],
+      "passed": false,
+      "error": null
+    }
+  ]
+}

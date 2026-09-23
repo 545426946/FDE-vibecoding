@@ -1,0 +1,15 @@
+2026-09-20 18:31:44,485 [INFO] 本次只迁移 1 张指定表（不会搬源库其余表）: users
+2026-09-20 18:31:44,535 [INFO] 导出 biz.users -> data\export\users.csv，5 行
+2026-09-20 18:31:44,538 [ERROR] 迁移表 users 失败
+Traceback (most recent call last):
+  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\pipeline.py", line 78, in migrate_tables
+    retry_call(
+  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\retry.py", line 41, in retry_call
+    return func()
+           ^^^^^^
+  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\pipeline.py", line 79, in <lambda>
+    lambda: prepare_table(
+            ^^^^^^^^^^^^^^
+  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\loader.py", line 52, in prepare_table
+    raise RuntimeError(f"目标表已存在: {qname}，migrate.if_exists=fail")
+RuntimeError: 目标表已存在: "demo"."users"，migrate.if_exists=fail

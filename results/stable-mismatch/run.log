@@ -1,0 +1,3 @@
+2026-09-20 18:31:51,967 [INFO] 校验 products: count 4/4 checksum DIFF sample_mismatch=1 passed=False
+2026-09-20 18:31:51,982 [INFO] 校验 edge_nulls: count 4/3 checksum DIFF sample_mismatch=1 passed=False
+2026-09-20 18:31:51,984 [INFO] 报告已写入 results\stable-mismatch\report.json 和 results\stable-mismatch\report.md

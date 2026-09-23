@@ -1,0 +1,68 @@
+2026-09-20 18:31:42,834 [INFO] 本次只迁移 8 张指定表（不会搬源库其余表）: users, products, orders, order_items, payments, edge_nulls, edge_empty, edge_types
+2026-09-20 18:31:42,919 [INFO] 导出 biz.users -> data\export\users.csv，5 行
+2026-09-20 18:31:42,951 [INFO] 已清空目标表 "demo"."users"
+2026-09-20 18:31:42,969 [INFO] COPY 写入 "demo"."users"，rowcount=5
+2026-09-20 18:31:42,979 [INFO] 导出 biz.products -> data\export\products.csv，4 行
+2026-09-20 18:31:42,996 [INFO] 已清空目标表 "demo"."products"
+2026-09-20 18:31:43,012 [INFO] COPY 写入 "demo"."products"，rowcount=4
+2026-09-20 18:31:43,017 [INFO] 导出 biz.orders -> data\export\orders.csv，5 行
+2026-09-20 18:31:43,027 [INFO] 已清空目标表 "demo"."orders"
+2026-09-20 18:31:43,037 [INFO] COPY 写入 "demo"."orders"，rowcount=5
+2026-09-20 18:31:43,045 [INFO] 导出 biz.order_items -> data\export\order_items.csv，5 行
+2026-09-20 18:31:43,056 [INFO] 已清空目标表 "demo"."order_items"
+2026-09-20 18:31:43,072 [INFO] COPY 写入 "demo"."order_items"，rowcount=5
+2026-09-20 18:31:43,079 [INFO] 导出 biz.payments -> data\export\payments.csv，3 行
+2026-09-20 18:31:43,094 [INFO] 已清空目标表 "demo"."payments"
+2026-09-20 18:31:43,109 [INFO] COPY 写入 "demo"."payments"，rowcount=3
+2026-09-20 18:31:43,117 [INFO] 导出 biz.edge_nulls -> data\export\edge_nulls.csv，4 行
+2026-09-20 18:31:43,129 [INFO] 已清空目标表 "demo"."edge_nulls"
+2026-09-20 18:31:43,145 [INFO] COPY 写入 "demo"."edge_nulls"，rowcount=4
+2026-09-20 18:31:43,152 [INFO] 导出 biz.edge_empty -> data\export\edge_empty.csv，0 行
+2026-09-20 18:31:43,161 [INFO] 已清空目标表 "demo"."edge_empty"
+2026-09-20 18:31:43,170 [INFO] COPY 写入 "demo"."edge_empty"，rowcount=0
+2026-09-20 18:31:43,177 [INFO] 导出 biz.edge_types -> data\export\edge_types.csv，3 行
+2026-09-20 18:31:43,186 [INFO] 已清空目标表 "demo"."edge_types"
+2026-09-20 18:31:43,200 [INFO] COPY 写入 "demo"."edge_types"，rowcount=3
+2026-09-20 18:31:43,305 [INFO] 校验 users: count 5/5 checksum match sample_mismatch=0 passed=True
+2026-09-20 18:31:43,320 [INFO] 校验 products: count 4/4 checksum match sample_mismatch=0 passed=True
+2026-09-20 18:31:43,333 [INFO] 校验 orders: count 5/5 checksum match sample_mismatch=0 passed=True
+2026-09-20 18:31:43,347 [INFO] 校验 order_items: count 5/5 checksum match sample_mismatch=0 passed=True
+2026-09-20 18:31:43,358 [INFO] 校验 payments: count 3/3 checksum match sample_mismatch=0 passed=True
+2026-09-20 18:31:43,370 [INFO] 校验 edge_nulls: count 4/4 checksum match sample_mismatch=0 passed=True
+2026-09-20 18:31:43,376 [INFO] 校验 edge_empty: count 0/0 checksum match sample_mismatch=0 passed=True
+2026-09-20 18:31:43,386 [INFO] 校验 edge_types: count 3/3 checksum match sample_mismatch=0 passed=True
+2026-09-20 18:31:43,388 [INFO] 报告已写入 results\stable-full\report.json 和 results\stable-full\report.md
+2026-09-20 18:31:52,121 [INFO] 本次只迁移 8 张指定表（不会搬源库其余表）: users, products, orders, order_items, payments, edge_nulls, edge_empty, edge_types
+2026-09-20 18:31:52,173 [INFO] 导出 biz.users -> data\export\users.csv，5 行
+2026-09-20 18:31:52,194 [INFO] 已清空目标表 "demo"."users"
+2026-09-20 18:31:52,204 [INFO] COPY 写入 "demo"."users"，rowcount=5
+2026-09-20 18:31:52,213 [INFO] 导出 biz.products -> data\export\products.csv，4 行
+2026-09-20 18:31:52,228 [INFO] 已清空目标表 "demo"."products"
+2026-09-20 18:31:52,237 [INFO] COPY 写入 "demo"."products"，rowcount=4
+2026-09-20 18:31:52,243 [INFO] 导出 biz.orders -> data\export\orders.csv，5 行
+2026-09-20 18:31:52,251 [INFO] 已清空目标表 "demo"."orders"
+2026-09-20 18:31:52,260 [INFO] COPY 写入 "demo"."orders"，rowcount=5
+2026-09-20 18:31:52,264 [INFO] 导出 biz.order_items -> data\export\order_items.csv，5 行
+2026-09-20 18:31:52,272 [INFO] 已清空目标表 "demo"."order_items"
+2026-09-20 18:31:52,280 [INFO] COPY 写入 "demo"."order_items"，rowcount=5
+2026-09-20 18:31:52,285 [INFO] 导出 biz.payments -> data\export\payments.csv，3 行
+2026-09-20 18:31:52,296 [INFO] 已清空目标表 "demo"."payments"
+2026-09-20 18:31:52,306 [INFO] COPY 写入 "demo"."payments"，rowcount=3
+2026-09-20 18:31:52,311 [INFO] 导出 biz.edge_nulls -> data\export\edge_nulls.csv，4 行
+2026-09-20 18:31:52,323 [INFO] 已清空目标表 "demo"."edge_nulls"
+2026-09-20 18:31:52,331 [INFO] COPY 写入 "demo"."edge_nulls"，rowcount=4
+2026-09-20 18:31:52,336 [INFO] 导出 biz.edge_empty -> data\export\edge_empty.csv，0 行
+2026-09-20 18:31:52,343 [INFO] 已清空目标表 "demo"."edge_empty"
+2026-09-20 18:31:52,349 [INFO] COPY 写入 "demo"."edge_empty"，rowcount=0
+2026-09-20 18:31:52,353 [INFO] 导出 biz.edge_types -> data\export\edge_types.csv，3 行
+2026-09-20 18:31:52,362 [INFO] 已清空目标表 "demo"."edge_types"
+2026-09-20 18:31:52,371 [INFO] COPY 写入 "demo"."edge_types"，rowcount=3
+2026-09-20 18:31:52,421 [INFO] 校验 users: count 5/5 checksum match sample_mismatch=0 passed=True
+2026-09-20 18:31:52,436 [INFO] 校验 products: count 4/4 checksum match sample_mismatch=0 passed=True
+2026-09-20 18:31:52,450 [INFO] 校验 orders: count 5/5 checksum match sample_mismatch=0 passed=True
+2026-09-20 18:31:52,463 [INFO] 校验 order_items: count 5/5 checksum match sample_mismatch=0 passed=True
+2026-09-20 18:31:52,473 [INFO] 校验 payments: count 3/3 checksum match sample_mismatch=0 passed=True
+2026-09-20 18:31:52,483 [INFO] 校验 edge_nulls: count 4/4 checksum match sample_mismatch=0 passed=True
+2026-09-20 18:31:52,488 [INFO] 校验 edge_empty: count 0/0 checksum match sample_mismatch=0 passed=True
+2026-09-20 18:31:52,506 [INFO] 校验 edge_types: count 3/3 checksum match sample_mismatch=0 passed=True
+2026-09-20 18:31:52,508 [INFO] 报告已写入 results\stable-full\report.json 和 results\stable-full\report.md

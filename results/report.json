@@ -1,0 +1,205 @@
+{
+  "generated_at": "2026-09-21T09:36:59",
+  "extra": {
+    "source": "127.0.0.1:12306/biz",
+    "target": "127.0.0.1:15432/mxadmin",
+    "dialect": "ymatrix",
+    "runtime": "ymatrix",
+    "notes": "图形界面：仅迁移 8 张指定表 (edge_empty, edge_nulls, edge_types, order_items, orders, payments, products, users)"
+  },
+  "migrate": [
+    {
+      "table": "edge_empty",
+      "status": "success",
+      "exported_rows": 0,
+      "loaded_rows": 0,
+      "ddl_path": "results\\ddl\\edge_empty.sql",
+      "warnings": [],
+      "error": null
+    },
+    {
+      "table": "edge_nulls",
+      "status": "success",
+      "exported_rows": 4,
+      "loaded_rows": 4,
+      "ddl_path": "results\\ddl\\edge_nulls.sql",
+      "warnings": [
+        "happened_at: DATETIME 映射为 TIMESTAMP WITHOUT TIME ZONE。MySQL DATETIME 无时区，目标库不要改成 TIMESTAMPTZ，否则会平移小时"
+      ],
+      "error": null
+    },
+    {
+      "table": "edge_types",
+      "status": "success",
+      "exported_rows": 3,
+      "loaded_rows": 3,
+      "ddl_path": "results\\ddl\\edge_types.sql",
+      "warnings": [
+        "id: UNSIGNED INT 映射为 BIGINT，避免 2^31 以上溢出",
+        "tiny_flag: TINYINT 映射为 SMALLINT，而不是 BOOLEAN，避免非 0/1 值写入失败",
+        "enum_status: ENUM 映射为 VARCHAR(32)，约束被丢掉，目标库不再拒绝非法枚举值",
+        "event_time: DATETIME 映射为 TIMESTAMP WITHOUT TIME ZONE。MySQL DATETIME 无时区，目标库不要改成 TIMESTAMPTZ，否则会平移小时",
+        "ts_col: MySQL TIMESTAMP 内部按 UTC 存，这里按 TIMESTAMP WITHOUT TIME ZONE 保字面值，不自动加时区，避免校验对不上"
+      ],
+      "error": null
+    },
+    {
+      "table": "order_items",
+      "status": "success",
+      "exported_rows": 5,
+      "loaded_rows": 5,
+      "ddl_path": "results\\ddl\\order_items.sql",
+      "warnings": [],
+      "error": null
+    },
+    {
+      "table": "orders",
+      "status": "success",
+      "exported_rows": 5,
+      "loaded_rows": 5,
+      "ddl_path": "results\\ddl\\orders.sql",
+      "warnings": [
+        "ordered_at: DATETIME 映射为 TIMESTAMP WITHOUT TIME ZONE。MySQL DATETIME 无时区，目标库不要改成 TIMESTAMPTZ，否则会平移小时"
+      ],
+      "error": null
+    },
+    {
+      "table": "payments",
+      "status": "success",
+      "exported_rows": 3,
+      "loaded_rows": 3,
+      "ddl_path": "results\\ddl\\payments.sql",
+      "warnings": [
+        "paid_at: MySQL TIMESTAMP 内部按 UTC 存，这里按 TIMESTAMP WITHOUT TIME ZONE 保字面值，不自动加时区，避免校验对不上"
+      ],
+      "error": null
+    },
+    {
+      "table": "products",
+      "status": "success",
+      "exported_rows": 4,
+      "loaded_rows": 4,
+      "ddl_path": "results\\ddl\\products.sql",
+      "warnings": [],
+      "error": null
+    },
+    {
+      "table": "users",
+      "status": "success",
+      "exported_rows": 5,
+      "loaded_rows": 5,
+      "ddl_path": "results\\ddl\\users.sql",
+      "warnings": [
+        "created_at: DATETIME 映射为 TIMESTAMP WITHOUT TIME ZONE。MySQL DATETIME 无时区，目标库不要改成 TIMESTAMPTZ，否则会平移小时",
+        "updated_at: MySQL TIMESTAMP 内部按 UTC 存，这里按 TIMESTAMP WITHOUT TIME ZONE 保字面值，不自动加时区，避免校验对不上"
+      ],
+      "error": null
+    }
+  ],
+  "validate": [
+    {
+      "table": "edge_empty",
+      "source_count": 0,
+      "target_count": 0,
+      "count_match": true,
+      "source_checksum": "0000000000000000",
+      "target_checksum": "0000000000000000",
+      "checksum_match": true,
+      "sample_checked": 0,
+      "sample_mismatches": [],
+      "passed": true,
+      "error": null
+    },
+    {
+      "table": "edge_nulls",
+      "source_count": 4,
+      "target_count": 4,
+      "count_match": true,
+      "source_checksum": "e63c404965ec726f",
+      "target_checksum": "e63c404965ec726f",
+      "checksum_match": true,
+      "sample_checked": 4,
+      "sample_mismatches": [],
+      "passed": true,
+      "error": null
+    },
+    {
+      "table": "edge_types",
+      "source_count": 3,
+      "target_count": 3,
+      "count_match": true,
+      "source_checksum": "3409919d1b346506",
+      "target_checksum": "3409919d1b346506",
+      "checksum_match": true,
+      "sample_checked": 3,
+      "sample_mismatches": [],
+      "passed": true,
+      "error": null
+    },
+    {
+      "table": "order_items",
+      "source_count": 5,
+      "target_count": 5,
+      "count_match": true,
+      "source_checksum": "a9632d73ce26eb87",
+      "target_checksum": "a9632d73ce26eb87",
+      "checksum_match": true,
+      "sample_checked": 5,
+      "sample_mismatches": [],
+      "passed": true,
+      "error": null
+    },
+    {
+      "table": "orders",
+      "source_count": 5,
+      "target_count": 5,
+      "count_match": true,
+      "source_checksum": "87fb7ce158827298",
+      "target_checksum": "87fb7ce158827298",
+      "checksum_match": true,
+      "sample_checked": 5,
+      "sample_mismatches": [],
+      "passed": true,
+      "error": null
+    },
+    {
+      "table": "payments",
+      "source_count": 3,
+      "target_count": 3,
+      "count_match": true,
+      "source_checksum": "196f19dd5b900f3a",
+      "target_checksum": "196f19dd5b900f3a",
+      "checksum_match": true,
+      "sample_checked": 3,
+      "sample_mismatches": [],
+      "passed": true,
+      "error": null
+    },
+    {
+      "table": "products",
+      "source_count": 4,
+      "target_count": 4,
+      "count_match": true,
+      "source_checksum": "c96de6d5114f1f92",
+      "target_checksum": "c96de6d5114f1f92",
+      "checksum_match": true,
+      "sample_checked": 4,
+      "sample_mismatches": [],
+      "passed": true,
+      "error": null
+    },
+    {
+      "table": "users",
+      "source_count": 5,
+      "target_count": 5,
+      "count_match": true,
+      "source_checksum": "a2c5ebe633c1e647",
+      "target_checksum": "a2c5ebe633c1e647",
+      "checksum_match": true,
+      "sample_checked": 5,
+      "sample_mismatches": [],
+      "passed": true,
+      "error": null
+    }
+  ]
+}

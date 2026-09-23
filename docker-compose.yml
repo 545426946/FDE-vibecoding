@@ -1,0 +1,24 @@
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: mx-migrate-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: demo
+      MYSQL_DATABASE: biz
+      TZ: Asia/Shanghai
+    ports:
+      - "12306:3306"
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --default-time-zone=+08:00
+    volumes:
+      - ./sql/mysql_init.sql:/docker-entrypoint-initdb.d/01.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-pdemo"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  # 作业目标库已改为真实 MatrixDB 容器 mx-ymatrix（见 scripts/ 初始化脚本）。
+  # 不要再启动社区 PostgreSQL，以免占用 15432。
+  # postgres:
+  #   image: postgres:16
+  #   ports: ["15432:5432"]

@@ -1,0 +1,10 @@
+2026-09-20 18:31:44,101 [INFO] 本次只迁移 2 张指定表（不会搬源库其余表）: users, orders
+2026-09-20 18:31:44,176 [INFO] 导出 biz.users -> data\export\users.csv，5 行
+2026-09-20 18:31:44,199 [INFO] 已清空目标表 "demo"."users"
+2026-09-20 18:31:44,212 [INFO] COPY 写入 "demo"."users"，rowcount=5
+2026-09-20 18:31:44,218 [INFO] 导出 biz.orders -> data\export\orders.csv，5 行
+2026-09-20 18:31:44,227 [INFO] 已清空目标表 "demo"."orders"
+2026-09-20 18:31:44,238 [INFO] COPY 写入 "demo"."orders"，rowcount=5
+2026-09-20 18:31:44,294 [INFO] 校验 users: count 5/5 checksum match sample_mismatch=0 passed=True
+2026-09-20 18:31:44,308 [INFO] 校验 orders: count 5/5 checksum match sample_mismatch=0 passed=True
+2026-09-20 18:31:44,310 [INFO] 报告已写入 results\stable-subset\report.json 和 results\stable-subset\report.md

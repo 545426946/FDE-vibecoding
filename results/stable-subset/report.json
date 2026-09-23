@@ -1,0 +1,63 @@
+{
+  "generated_at": "2026-09-20T18:31:44",
+  "extra": {
+    "source": "127.0.0.1:12306/biz",
+    "target": "127.0.0.1:15432/mxadmin",
+    "dialect": "ymatrix",
+    "runtime": "ymatrix",
+    "notes": "全量迁移 + 行数 / checksum / 抽样校验"
+  },
+  "migrate": [
+    {
+      "table": "users",
+      "status": "success",
+      "exported_rows": 5,
+      "loaded_rows": 5,
+      "ddl_path": "results\\stable-subset\\ddl\\users.sql",
+      "warnings": [
+        "created_at: DATETIME 映射为 TIMESTAMP WITHOUT TIME ZONE。MySQL DATETIME 无时区，目标库不要改成 TIMESTAMPTZ，否则会平移小时",
+        "updated_at: MySQL TIMESTAMP 内部按 UTC 存，这里按 TIMESTAMP WITHOUT TIME ZONE 保字面值，不自动加时区，避免校验对不上"
+      ],
+      "error": null
+    },
+    {
+      "table": "orders",
+      "status": "success",
+      "exported_rows": 5,
+      "loaded_rows": 5,
+      "ddl_path": "results\\stable-subset\\ddl\\orders.sql",
+      "warnings": [
+        "ordered_at: DATETIME 映射为 TIMESTAMP WITHOUT TIME ZONE。MySQL DATETIME 无时区，目标库不要改成 TIMESTAMPTZ，否则会平移小时"
+      ],
+      "error": null
+    }
+  ],
+  "validate": [
+    {
+      "table": "users",
+      "source_count": 5,
+      "target_count": 5,
+      "count_match": true,
+      "source_checksum": "a2c5ebe633c1e647",
+      "target_checksum": "a2c5ebe633c1e647",
+      "checksum_match": true,
+      "sample_checked": 5,
+      "sample_mismatches": [],
+      "passed": true,
+      "error": null
+    },
+    {
+      "table": "orders",
+      "source_count": 5,
+      "target_count": 5,
+      "count_match": true,
+      "source_checksum": "87fb7ce158827298",
+      "target_checksum": "87fb7ce158827298",
+      "checksum_match": true,
+      "sample_checked": 5,
+      "sample_mismatches": [],
+      "passed": true,
+      "error": null
+    }
+  ]
+}

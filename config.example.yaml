@@ -1,0 +1,48 @@
+# 复制为 config.yaml 后填写实际可达的源库 / 目标库。
+# host 可以是 127.0.0.1、内网 IP 或域名；工具从「运行它的那台机器」去连两边。
+
+source:
+  host: 127.0.0.1
+  port: 12306          # 源 MySQL 端口（本地 Docker 示例为 12306，远程常见 3306）
+  user: root
+  password: demo
+  database: biz
+  charset: utf8mb4
+  connect_timeout: 5
+
+target:
+  # 真 YMatrix：dialect 与 runtime 都用 ymatrix。社区 PostgreSQL 演示把 runtime 改为 postgresql。
+  dialect: ymatrix
+  runtime: ymatrix
+  host: 127.0.0.1
+  port: 15432          # 目标库端口（远程常见 5432，以对方实际为准）
+  user: mxadmin
+  password: changeme
+  database: mxadmin
+  schema: public
+  connect_timeout: 10
+
+migrate:
+  # 只迁这里列出的表，不会自动搬源库其余表。命令行可用 --tables 覆盖。
+  tables:
+    - users
+    - products
+    - orders
+    - order_items
+    - payments
+    - edge_nulls
+    - edge_empty
+    - edge_types
+  if_exists: fail      # fail | truncate | replace。客户库用 fail，不要用 replace
+  csv_dir: ./data/export
+  retries: 3
+  retry_backoff_seconds: 0.5
+  continue_on_error: true
+
+validate:
+  sample_size: 20
+  checksum_chunk_size: 1000
+
+output:
+  results_dir: ./results
+  log_level: INFO
