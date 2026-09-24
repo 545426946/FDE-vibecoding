@@ -1,346 +1,55 @@
-2026-09-20 11:14:03,082 [INFO] 导出 biz.users -> data\export\users.csv，5 行
-2026-09-20 11:14:03,127 [INFO] 已创建目标表 "demo"."users"
-2026-09-20 11:14:03,147 [INFO] COPY 写入 "demo"."users"，rowcount=5
-2026-09-20 11:14:03,153 [INFO] 导出 biz.products -> data\export\products.csv，4 行
-2026-09-20 11:14:03,168 [INFO] 已创建目标表 "demo"."products"
-2026-09-20 11:14:03,182 [INFO] COPY 写入 "demo"."products"，rowcount=4
-2026-09-20 11:14:03,188 [INFO] 导出 biz.orders -> data\export\orders.csv，5 行
-2026-09-20 11:14:03,198 [INFO] 已创建目标表 "demo"."orders"
-2026-09-20 11:14:03,210 [INFO] COPY 写入 "demo"."orders"，rowcount=5
-2026-09-20 11:14:03,214 [INFO] 导出 biz.order_items -> data\export\order_items.csv，5 行
-2026-09-20 11:14:03,224 [INFO] 已创建目标表 "demo"."order_items"
-2026-09-20 11:14:03,236 [INFO] COPY 写入 "demo"."order_items"，rowcount=5
-2026-09-20 11:14:03,243 [INFO] 导出 biz.payments -> data\export\payments.csv，3 行
-2026-09-20 11:14:03,258 [INFO] 已创建目标表 "demo"."payments"
-2026-09-20 11:14:03,270 [INFO] COPY 写入 "demo"."payments"，rowcount=3
-2026-09-20 11:14:03,275 [INFO] 导出 biz.edge_nulls -> data\export\edge_nulls.csv，4 行
-2026-09-20 11:14:03,317 [INFO] 已创建目标表 "demo"."edge_nulls"
-2026-09-20 11:14:03,330 [INFO] COPY 写入 "demo"."edge_nulls"，rowcount=4
-2026-09-20 11:14:03,335 [INFO] 导出 biz.edge_empty -> data\export\edge_empty.csv，0 行
-2026-09-20 11:14:03,345 [INFO] 已创建目标表 "demo"."edge_empty"
-2026-09-20 11:14:03,351 [INFO] COPY 写入 "demo"."edge_empty"，rowcount=0
-2026-09-20 11:14:03,356 [INFO] 导出 biz.edge_types -> data\export\edge_types.csv，3 行
-2026-09-20 11:14:03,365 [INFO] 已创建目标表 "demo"."edge_types"
-2026-09-20 11:14:03,376 [INFO] COPY 写入 "demo"."edge_types"，rowcount=3
-2026-09-20 11:14:03,428 [INFO] 校验 users: count 5/5 checksum match sample_mismatch=0 passed=True
-2026-09-20 11:14:03,440 [INFO] 校验 products: count 4/4 checksum match sample_mismatch=0 passed=True
-2026-09-20 11:14:03,453 [INFO] 校验 orders: count 5/5 checksum match sample_mismatch=0 passed=True
-2026-09-20 11:14:03,466 [INFO] 校验 order_items: count 5/5 checksum match sample_mismatch=0 passed=True
-2026-09-20 11:14:03,474 [INFO] 校验 payments: count 3/3 checksum match sample_mismatch=0 passed=True
-2026-09-20 11:14:03,484 [INFO] 校验 edge_nulls: count 4/4 checksum match sample_mismatch=0 passed=True
-2026-09-20 11:14:03,488 [INFO] 校验 edge_empty: count 0/0 checksum match sample_mismatch=0 passed=True
-2026-09-20 11:14:03,499 [INFO] 校验 edge_types: count 3/3 checksum match sample_mismatch=0 passed=True
-2026-09-20 11:14:03,502 [INFO] 报告已写入 results\report.json 和 results\report.md
-2026-09-20 11:14:03,502 [INFO] 迁移校验通过，报告 results\report.md
-2026-09-20 17:39:05,378 [INFO] 本次只迁移 2 张指定表（不会搬源库其余表）: orders, users
-2026-09-20 17:39:05,448 [INFO] 导出 biz.orders -> data\export\orders.csv，5 行
-2026-09-20 17:39:05,469 [ERROR] 迁移表 orders 失败
-Traceback (most recent call last):
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\pipeline.py", line 77, in migrate_tables
-    retry_call(
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\retry.py", line 41, in retry_call
-    return func()
-           ^^^^^^
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\pipeline.py", line 78, in <lambda>
-    lambda: prepare_table(
-            ^^^^^^^^^^^^^^
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\loader.py", line 46, in prepare_table
-    raise RuntimeError(f"目标表已存在: {qname}，migrate.if_exists=fail")
-RuntimeError: 目标表已存在: "demo"."orders"，migrate.if_exists=fail
-2026-09-20 17:39:05,477 [INFO] 导出 biz.users -> data\export\users.csv，5 行
-2026-09-20 17:39:05,479 [ERROR] 迁移表 users 失败
-Traceback (most recent call last):
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\pipeline.py", line 77, in migrate_tables
-    retry_call(
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\retry.py", line 41, in retry_call
-    return func()
-           ^^^^^^
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\pipeline.py", line 78, in <lambda>
-    lambda: prepare_table(
-            ^^^^^^^^^^^^^^
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\loader.py", line 46, in prepare_table
-    raise RuntimeError(f"目标表已存在: {qname}，migrate.if_exists=fail")
-RuntimeError: 目标表已存在: "demo"."users"，migrate.if_exists=fail
-2026-09-20 17:39:05,557 [INFO] 校验 orders: count 5/5 checksum DIFF sample_mismatch=1 passed=False
-2026-09-20 17:39:05,570 [INFO] 校验 users: count 5/5 checksum DIFF sample_mismatch=1 passed=False
-2026-09-20 17:39:05,573 [INFO] 报告已写入 results\report.json 和 results\report.md
-2026-09-20 17:39:05,573 [INFO] 迁移或校验未全部通过，见 results\report.md
-2026-09-20 17:40:18,350 [INFO] 目标库连通：mxadmin / PostgreSQL 12 (MatrixDB 4.8.12-community) (Greenplum Database 7.0.0+dev.18555.g3fe3d0e033e build commit:3fe3d0e033eb2088b436be286acc6b7a7aad4937) on x86_64-pc-linux-gnu, compiled by gcc (GCC) 11.2.1 20220127 (Red Hat 11.2.1-9), 64-bit compiled on Aug 12 2024 06:50:08
-2026-09-20 17:40:19,651 [INFO] 源库连通，共 8 张表；已勾选 2 张。未勾选的 6 张不会迁移。
-2026-09-20 17:40:20,822 [INFO] 目标库连通：mxadmin / PostgreSQL 12 (MatrixDB 4.8.12-community) (Greenplum Database 7.0.0+dev.18555.g3fe3d0e033e build commit:3fe3d0e033eb2088b436be286acc6b7a7aad4937) on x86_64-pc-linux-gnu, compiled by gcc (GCC) 11.2.1 20220127 (Red Hat 11.2.1-9), 64-bit compiled on Aug 12 2024 06:50:08
-2026-09-20 17:40:21,265 [INFO] 目标库连通：mxadmin / PostgreSQL 12 (MatrixDB 4.8.12-community) (Greenplum Database 7.0.0+dev.18555.g3fe3d0e033e build commit:3fe3d0e033eb2088b436be286acc6b7a7aad4937) on x86_64-pc-linux-gnu, compiled by gcc (GCC) 11.2.1 20220127 (Red Hat 11.2.1-9), 64-bit compiled on Aug 12 2024 06:50:08
-2026-09-20 17:40:21,427 [INFO] 目标库连通：mxadmin / PostgreSQL 12 (MatrixDB 4.8.12-community) (Greenplum Database 7.0.0+dev.18555.g3fe3d0e033e build commit:3fe3d0e033eb2088b436be286acc6b7a7aad4937) on x86_64-pc-linux-gnu, compiled by gcc (GCC) 11.2.1 20220127 (Red Hat 11.2.1-9), 64-bit compiled on Aug 12 2024 06:50:08
-2026-09-20 17:40:21,567 [INFO] 目标库连通：mxadmin / PostgreSQL 12 (MatrixDB 4.8.12-community) (Greenplum Database 7.0.0+dev.18555.g3fe3d0e033e build commit:3fe3d0e033eb2088b436be286acc6b7a7aad4937) on x86_64-pc-linux-gnu, compiled by gcc (GCC) 11.2.1 20220127 (Red Hat 11.2.1-9), 64-bit compiled on Aug 12 2024 06:50:08
-2026-09-20 17:40:25,147 [INFO] 本次只迁移 2 张指定表（不会搬源库其余表）: orders, users
-2026-09-20 17:40:25,188 [INFO] 导出 biz.orders -> data\export\orders.csv，5 行
-2026-09-20 17:40:25,192 [ERROR] 迁移表 orders 失败
-Traceback (most recent call last):
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\pipeline.py", line 77, in migrate_tables
-    retry_call(
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\retry.py", line 41, in retry_call
-    return func()
-           ^^^^^^
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\pipeline.py", line 78, in <lambda>
-    lambda: prepare_table(
-            ^^^^^^^^^^^^^^
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\loader.py", line 46, in prepare_table
-    raise RuntimeError(f"目标表已存在: {qname}，migrate.if_exists=fail")
-RuntimeError: 目标表已存在: "demo"."orders"，migrate.if_exists=fail
-2026-09-20 17:40:25,200 [INFO] 导出 biz.users -> data\export\users.csv，5 行
-2026-09-20 17:40:25,202 [ERROR] 迁移表 users 失败
-Traceback (most recent call last):
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\pipeline.py", line 77, in migrate_tables
-    retry_call(
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\retry.py", line 41, in retry_call
-    return func()
-           ^^^^^^
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\pipeline.py", line 78, in <lambda>
-    lambda: prepare_table(
-            ^^^^^^^^^^^^^^
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\loader.py", line 46, in prepare_table
-    raise RuntimeError(f"目标表已存在: {qname}，migrate.if_exists=fail")
-RuntimeError: 目标表已存在: "demo"."users"，migrate.if_exists=fail
-2026-09-20 17:40:25,292 [INFO] 校验 orders: count 5/5 checksum DIFF sample_mismatch=1 passed=False
-2026-09-20 17:40:25,305 [INFO] 校验 users: count 5/5 checksum DIFF sample_mismatch=1 passed=False
-2026-09-20 17:40:25,307 [INFO] 报告已写入 results\report.json 和 results\report.md
-2026-09-20 17:40:25,307 [INFO] 迁移或校验未全部通过，见 results\report.md
-2026-09-20 17:42:03,951 [INFO] 目标库连通：mxadmin / PostgreSQL 12 (MatrixDB 4.8.12-community) (Greenplum Database 7.0.0+dev.18555.g3fe3d0e033e build commit:3fe3d0e033eb2088b436be286acc6b7a7aad4937) on x86_64-pc-linux-gnu, compiled by gcc (GCC) 11.2.1 20220127 (Red Hat 11.2.1-9), 64-bit compiled on Aug 12 2024 06:50:08
-2026-09-20 17:42:04,415 [INFO] 源库连通，共 8 张表；已勾选 2 张。未勾选的 6 张不会迁移。
-2026-09-20 17:42:04,737 [INFO] 目标库连通：mxadmin / PostgreSQL 12 (MatrixDB 4.8.12-community) (Greenplum Database 7.0.0+dev.18555.g3fe3d0e033e build commit:3fe3d0e033eb2088b436be286acc6b7a7aad4937) on x86_64-pc-linux-gnu, compiled by gcc (GCC) 11.2.1 20220127 (Red Hat 11.2.1-9), 64-bit compiled on Aug 12 2024 06:50:08
-2026-09-20 17:42:06,037 [INFO] 本次只迁移 2 张指定表（不会搬源库其余表）: orders, users
-2026-09-20 17:42:06,087 [INFO] 导出 biz.orders -> data\export\orders.csv，5 行
-2026-09-20 17:42:06,091 [ERROR] 迁移表 orders 失败
-Traceback (most recent call last):
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\pipeline.py", line 77, in migrate_tables
-    retry_call(
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\retry.py", line 41, in retry_call
-    return func()
-           ^^^^^^
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\pipeline.py", line 78, in <lambda>
-    lambda: prepare_table(
-            ^^^^^^^^^^^^^^
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\loader.py", line 46, in prepare_table
-    raise RuntimeError(f"目标表已存在: {qname}，migrate.if_exists=fail")
-RuntimeError: 目标表已存在: "demo"."orders"，migrate.if_exists=fail
-2026-09-20 17:42:06,100 [INFO] 导出 biz.users -> data\export\users.csv，5 行
-2026-09-20 17:42:06,102 [ERROR] 迁移表 users 失败
-Traceback (most recent call last):
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\pipeline.py", line 77, in migrate_tables
-    retry_call(
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\retry.py", line 41, in retry_call
-    return func()
-           ^^^^^^
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\pipeline.py", line 78, in <lambda>
-    lambda: prepare_table(
-            ^^^^^^^^^^^^^^
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\loader.py", line 46, in prepare_table
-    raise RuntimeError(f"目标表已存在: {qname}，migrate.if_exists=fail")
-RuntimeError: 目标表已存在: "demo"."users"，migrate.if_exists=fail
-2026-09-20 17:42:06,183 [INFO] 校验 orders: count 5/0 checksum DIFF sample_mismatch=5 passed=False
-2026-09-20 17:42:06,194 [INFO] 校验 users: count 5/0 checksum DIFF sample_mismatch=5 passed=False
-2026-09-20 17:42:06,196 [INFO] 报告已写入 results\report.json 和 results\report.md
-2026-09-20 17:42:06,196 [INFO] 迁移或校验未全部通过，见 results\report.md
-2026-09-20 17:44:51,674 [INFO] 本次只迁移 2 张指定表（不会搬源库其余表）: orders, users
-2026-09-20 17:44:51,763 [INFO] 导出 biz.orders -> data\export\orders.csv，5 行
-2026-09-20 17:44:51,804 [INFO] 已创建目标表 "demo"."orders"
-2026-09-20 17:44:51,815 [INFO] COPY 写入 "demo"."orders"，rowcount=5
-2026-09-20 17:44:51,821 [INFO] 导出 biz.users -> data\export\users.csv，5 行
-2026-09-20 17:44:51,836 [INFO] 已创建目标表 "demo"."users"
-2026-09-20 17:44:51,846 [INFO] COPY 写入 "demo"."users"，rowcount=5
-2026-09-20 17:44:51,900 [INFO] 校验 orders: count 5/5 checksum match sample_mismatch=0 passed=True
-2026-09-20 17:44:51,914 [INFO] 校验 users: count 5/5 checksum match sample_mismatch=0 passed=True
-2026-09-20 17:44:51,916 [INFO] 报告已写入 results\report.json 和 results\report.md
-2026-09-20 17:44:51,917 [INFO] 迁移校验通过，报告 results\report.md
-2026-09-21 09:36:13,559 [INFO] 本次只迁移 8 张指定表（不会搬源库其余表）: edge_empty, edge_nulls, edge_types, order_items, orders, payments, products, users
-2026-09-21 09:36:13,633 [INFO] 导出 biz.edge_empty -> data\export\edge_empty.csv，0 行
-2026-09-21 09:36:13,641 [ERROR] 迁移表 edge_empty 失败
-Traceback (most recent call last):
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\pipeline.py", line 78, in migrate_tables
-    retry_call(
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\retry.py", line 41, in retry_call
-    return func()
-           ^^^^^^
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\pipeline.py", line 79, in <lambda>
-    lambda: prepare_table(
-            ^^^^^^^^^^^^^^
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\loader.py", line 52, in prepare_table
-    raise RuntimeError(f"目标表已存在: {qname}，migrate.if_exists=fail")
-RuntimeError: 目标表已存在: "demo"."edge_empty"，migrate.if_exists=fail
-2026-09-21 09:36:13,650 [INFO] 导出 biz.edge_nulls -> data\export\edge_nulls.csv，4 行
-2026-09-21 09:36:13,652 [ERROR] 迁移表 edge_nulls 失败
-Traceback (most recent call last):
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\pipeline.py", line 78, in migrate_tables
-    retry_call(
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\retry.py", line 41, in retry_call
-    return func()
-           ^^^^^^
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\pipeline.py", line 79, in <lambda>
-    lambda: prepare_table(
-            ^^^^^^^^^^^^^^
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\loader.py", line 52, in prepare_table
-    raise RuntimeError(f"目标表已存在: {qname}，migrate.if_exists=fail")
-RuntimeError: 目标表已存在: "demo"."edge_nulls"，migrate.if_exists=fail
-2026-09-21 09:36:13,660 [INFO] 导出 biz.edge_types -> data\export\edge_types.csv，3 行
-2026-09-21 09:36:13,662 [ERROR] 迁移表 edge_types 失败
-Traceback (most recent call last):
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\pipeline.py", line 78, in migrate_tables
-    retry_call(
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\retry.py", line 41, in retry_call
-    return func()
-           ^^^^^^
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\pipeline.py", line 79, in <lambda>
-    lambda: prepare_table(
-            ^^^^^^^^^^^^^^
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\loader.py", line 52, in prepare_table
-    raise RuntimeError(f"目标表已存在: {qname}，migrate.if_exists=fail")
-RuntimeError: 目标表已存在: "demo"."edge_types"，migrate.if_exists=fail
-2026-09-21 09:36:13,669 [INFO] 导出 biz.order_items -> data\export\order_items.csv，5 行
-2026-09-21 09:36:13,671 [ERROR] 迁移表 order_items 失败
-Traceback (most recent call last):
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\pipeline.py", line 78, in migrate_tables
-    retry_call(
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\retry.py", line 41, in retry_call
-    return func()
-           ^^^^^^
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\pipeline.py", line 79, in <lambda>
-    lambda: prepare_table(
-            ^^^^^^^^^^^^^^
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\loader.py", line 52, in prepare_table
-    raise RuntimeError(f"目标表已存在: {qname}，migrate.if_exists=fail")
-RuntimeError: 目标表已存在: "demo"."order_items"，migrate.if_exists=fail
-2026-09-21 09:36:13,680 [INFO] 导出 biz.orders -> data\export\orders.csv，5 行
-2026-09-21 09:36:13,681 [ERROR] 迁移表 orders 失败
-Traceback (most recent call last):
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\pipeline.py", line 78, in migrate_tables
-    retry_call(
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\retry.py", line 41, in retry_call
-    return func()
-           ^^^^^^
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\pipeline.py", line 79, in <lambda>
-    lambda: prepare_table(
-            ^^^^^^^^^^^^^^
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\loader.py", line 52, in prepare_table
-    raise RuntimeError(f"目标表已存在: {qname}，migrate.if_exists=fail")
-RuntimeError: 目标表已存在: "demo"."orders"，migrate.if_exists=fail
-2026-09-21 09:36:13,689 [INFO] 导出 biz.payments -> data\export\payments.csv，3 行
-2026-09-21 09:36:13,691 [ERROR] 迁移表 payments 失败
-Traceback (most recent call last):
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\pipeline.py", line 78, in migrate_tables
-    retry_call(
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\retry.py", line 41, in retry_call
-    return func()
-           ^^^^^^
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\pipeline.py", line 79, in <lambda>
-    lambda: prepare_table(
-            ^^^^^^^^^^^^^^
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\loader.py", line 52, in prepare_table
-    raise RuntimeError(f"目标表已存在: {qname}，migrate.if_exists=fail")
-RuntimeError: 目标表已存在: "demo"."payments"，migrate.if_exists=fail
-2026-09-21 09:36:13,698 [INFO] 导出 biz.products -> data\export\products.csv，4 行
-2026-09-21 09:36:13,700 [ERROR] 迁移表 products 失败
-Traceback (most recent call last):
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\pipeline.py", line 78, in migrate_tables
-    retry_call(
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\retry.py", line 41, in retry_call
-    return func()
-           ^^^^^^
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\pipeline.py", line 79, in <lambda>
-    lambda: prepare_table(
-            ^^^^^^^^^^^^^^
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\loader.py", line 52, in prepare_table
-    raise RuntimeError(f"目标表已存在: {qname}，migrate.if_exists=fail")
-RuntimeError: 目标表已存在: "demo"."products"，migrate.if_exists=fail
-2026-09-21 09:36:13,709 [INFO] 导出 biz.users -> data\export\users.csv，5 行
-2026-09-21 09:36:13,710 [ERROR] 迁移表 users 失败
-Traceback (most recent call last):
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\pipeline.py", line 78, in migrate_tables
-    retry_call(
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\retry.py", line 41, in retry_call
-    return func()
-           ^^^^^^
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\pipeline.py", line 79, in <lambda>
-    lambda: prepare_table(
-            ^^^^^^^^^^^^^^
-  File "C:\Users\yy\Desktop\YMatrix面试题\mysql2ymatrix\src\loader.py", line 52, in prepare_table
-    raise RuntimeError(f"目标表已存在: {qname}，migrate.if_exists=fail")
-RuntimeError: 目标表已存在: "demo"."users"，migrate.if_exists=fail
-2026-09-21 09:36:13,790 [INFO] 校验 edge_empty: count 0/0 checksum match sample_mismatch=0 passed=True
-2026-09-21 09:36:13,808 [INFO] 校验 edge_nulls: count 4/4 checksum match sample_mismatch=0 passed=True
-2026-09-21 09:36:13,820 [INFO] 校验 edge_types: count 3/3 checksum match sample_mismatch=0 passed=True
-2026-09-21 09:36:13,832 [INFO] 校验 order_items: count 5/5 checksum match sample_mismatch=0 passed=True
-2026-09-21 09:36:13,846 [INFO] 校验 orders: count 5/5 checksum match sample_mismatch=0 passed=True
-2026-09-21 09:36:13,855 [INFO] 校验 payments: count 3/3 checksum match sample_mismatch=0 passed=True
-2026-09-21 09:36:13,868 [INFO] 校验 products: count 4/4 checksum match sample_mismatch=0 passed=True
-2026-09-21 09:36:13,880 [INFO] 校验 users: count 5/5 checksum match sample_mismatch=0 passed=True
-2026-09-21 09:36:13,883 [INFO] 报告已写入 results\report.json 和 results\report.md
-2026-09-21 09:36:13,883 [INFO] 迁移或校验未全部通过，见 results\report.md
-2026-09-21 09:36:39,481 [INFO] 本次只迁移 8 张指定表（不会搬源库其余表）: edge_empty, edge_nulls, edge_types, order_items, orders, payments, products, users
-2026-09-21 09:36:39,539 [INFO] 导出 biz.edge_empty -> data\export\edge_empty.csv，0 行
-2026-09-21 09:36:39,555 [INFO] 已清空目标表 "demo"."edge_empty"
-2026-09-21 09:36:39,563 [INFO] COPY 写入 "demo"."edge_empty"，rowcount=0
-2026-09-21 09:36:39,568 [INFO] 导出 biz.edge_nulls -> data\export\edge_nulls.csv，4 行
-2026-09-21 09:36:39,580 [INFO] 已清空目标表 "demo"."edge_nulls"
-2026-09-21 09:36:39,594 [INFO] COPY 写入 "demo"."edge_nulls"，rowcount=4
-2026-09-21 09:36:39,598 [INFO] 导出 biz.edge_types -> data\export\edge_types.csv，3 行
-2026-09-21 09:36:39,607 [INFO] 已清空目标表 "demo"."edge_types"
-2026-09-21 09:36:39,616 [INFO] COPY 写入 "demo"."edge_types"，rowcount=3
-2026-09-21 09:36:39,621 [INFO] 导出 biz.order_items -> data\export\order_items.csv，5 行
-2026-09-21 09:36:39,629 [INFO] 已清空目标表 "demo"."order_items"
-2026-09-21 09:36:39,638 [INFO] COPY 写入 "demo"."order_items"，rowcount=5
-2026-09-21 09:36:39,642 [INFO] 导出 biz.orders -> data\export\orders.csv，5 行
-2026-09-21 09:36:39,650 [INFO] 已清空目标表 "demo"."orders"
-2026-09-21 09:36:39,657 [INFO] COPY 写入 "demo"."orders"，rowcount=5
-2026-09-21 09:36:39,661 [INFO] 导出 biz.payments -> data\export\payments.csv，3 行
-2026-09-21 09:36:39,672 [INFO] 已清空目标表 "demo"."payments"
-2026-09-21 09:36:39,681 [INFO] COPY 写入 "demo"."payments"，rowcount=3
-2026-09-21 09:36:39,685 [INFO] 导出 biz.products -> data\export\products.csv，4 行
-2026-09-21 09:36:39,697 [INFO] 已清空目标表 "demo"."products"
-2026-09-21 09:36:39,709 [INFO] COPY 写入 "demo"."products"，rowcount=4
-2026-09-21 09:36:39,714 [INFO] 导出 biz.users -> data\export\users.csv，5 行
-2026-09-21 09:36:39,724 [INFO] 已清空目标表 "demo"."users"
-2026-09-21 09:36:39,732 [INFO] COPY 写入 "demo"."users"，rowcount=5
-2026-09-21 09:36:39,770 [INFO] 校验 edge_empty: count 0/0 checksum match sample_mismatch=0 passed=True
-2026-09-21 09:36:39,780 [INFO] 校验 edge_nulls: count 4/4 checksum match sample_mismatch=0 passed=True
-2026-09-21 09:36:39,788 [INFO] 校验 edge_types: count 3/3 checksum match sample_mismatch=0 passed=True
-2026-09-21 09:36:39,798 [INFO] 校验 order_items: count 5/5 checksum match sample_mismatch=0 passed=True
-2026-09-21 09:36:39,809 [INFO] 校验 orders: count 5/5 checksum match sample_mismatch=0 passed=True
-2026-09-21 09:36:39,816 [INFO] 校验 payments: count 3/3 checksum match sample_mismatch=0 passed=True
-2026-09-21 09:36:39,826 [INFO] 校验 products: count 4/4 checksum match sample_mismatch=0 passed=True
-2026-09-21 09:36:39,837 [INFO] 校验 users: count 5/5 checksum match sample_mismatch=0 passed=True
-2026-09-21 09:36:39,838 [INFO] 报告已写入 results\report.json 和 results\report.md
-2026-09-21 09:36:39,839 [INFO] 迁移校验通过，报告 results\report.md
-2026-09-21 09:36:58,993 [INFO] 本次只迁移 8 张指定表（不会搬源库其余表）: edge_empty, edge_nulls, edge_types, order_items, orders, payments, products, users
-2026-09-21 09:36:59,031 [INFO] 导出 biz.edge_empty -> data\export\edge_empty.csv，0 行
-2026-09-21 09:36:59,073 [INFO] 已创建目标表 "demo"."edge_empty"
-2026-09-21 09:36:59,100 [INFO] COPY 写入 "demo"."edge_empty"，rowcount=0
-2026-09-21 09:36:59,105 [INFO] 导出 biz.edge_nulls -> data\export\edge_nulls.csv，4 行
-2026-09-21 09:36:59,121 [INFO] 已创建目标表 "demo"."edge_nulls"
-2026-09-21 09:36:59,130 [INFO] COPY 写入 "demo"."edge_nulls"，rowcount=4
-2026-09-21 09:36:59,135 [INFO] 导出 biz.edge_types -> data\export\edge_types.csv，3 行
-2026-09-21 09:36:59,147 [INFO] 已创建目标表 "demo"."edge_types"
-2026-09-21 09:36:59,156 [INFO] COPY 写入 "demo"."edge_types"，rowcount=3
-2026-09-21 09:36:59,160 [INFO] 导出 biz.order_items -> data\export\order_items.csv，5 行
-2026-09-21 09:36:59,169 [INFO] 已创建目标表 "demo"."order_items"
-2026-09-21 09:36:59,177 [INFO] COPY 写入 "demo"."order_items"，rowcount=5
-2026-09-21 09:36:59,182 [INFO] 导出 biz.orders -> data\export\orders.csv，5 行
-2026-09-21 09:36:59,191 [INFO] 已创建目标表 "demo"."orders"
-2026-09-21 09:36:59,198 [INFO] COPY 写入 "demo"."orders"，rowcount=5
-2026-09-21 09:36:59,203 [INFO] 导出 biz.payments -> data\export\payments.csv，3 行
-2026-09-21 09:36:59,215 [INFO] 已创建目标表 "demo"."payments"
-2026-09-21 09:36:59,224 [INFO] COPY 写入 "demo"."payments"，rowcount=3
-2026-09-21 09:36:59,228 [INFO] 导出 biz.products -> data\export\products.csv，4 行
-2026-09-21 09:36:59,245 [INFO] 已创建目标表 "demo"."products"
-2026-09-21 09:36:59,253 [INFO] COPY 写入 "demo"."products"，rowcount=4
-2026-09-21 09:36:59,257 [INFO] 导出 biz.users -> data\export\users.csv，5 行
-2026-09-21 09:36:59,269 [INFO] 已创建目标表 "demo"."users"
-2026-09-21 09:36:59,277 [INFO] COPY 写入 "demo"."users"，rowcount=5
-2026-09-21 09:36:59,338 [INFO] 校验 edge_empty: count 0/0 checksum match sample_mismatch=0 passed=True
-2026-09-21 09:36:59,350 [INFO] 校验 edge_nulls: count 4/4 checksum match sample_mismatch=0 passed=True
-2026-09-21 09:36:59,359 [INFO] 校验 edge_types: count 3/3 checksum match sample_mismatch=0 passed=True
-2026-09-21 09:36:59,370 [INFO] 校验 order_items: count 5/5 checksum match sample_mismatch=0 passed=True
-2026-09-21 09:36:59,380 [INFO] 校验 orders: count 5/5 checksum match sample_mismatch=0 passed=True
-2026-09-21 09:36:59,389 [INFO] 校验 payments: count 3/3 checksum match sample_mismatch=0 passed=True
-2026-09-21 09:36:59,399 [INFO] 校验 products: count 4/4 checksum match sample_mismatch=0 passed=True
-2026-09-21 09:36:59,410 [INFO] 校验 users: count 5/5 checksum match sample_mismatch=0 passed=True
-2026-09-21 09:36:59,412 [INFO] 报告已写入 results\report.json 和 results\report.md
-2026-09-21 09:36:59,413 [INFO] 迁移校验通过，报告 results\report.md
+2026-09-24 09:42:42,699 [INFO] 读取指定表结构: edge_empty, edge_nulls, edge_types, order_items, orders, payments, products, users
+2026-09-24 09:42:42,723 [INFO] 表结构：
+edge_empty  pk=['id']  cols=2
+edge_nulls  pk=['id']  cols=5
+edge_types  pk=['id']  cols=8
+order_items  pk=['id']  cols=5
+orders  pk=['id']  cols=5
+payments  pk=['id']  cols=6
+products  pk=['id']  cols=6
+users  pk=['id']  cols=6
+2026-09-24 09:42:43,960 [INFO] 读取指定表结构: edge_empty, edge_nulls, edge_types, order_items, orders, payments, products, users
+2026-09-24 09:42:43,983 [INFO] 表结构：
+edge_empty  pk=['id']  cols=2
+edge_nulls  pk=['id']  cols=5
+edge_types  pk=['id']  cols=8
+order_items  pk=['id']  cols=5
+orders  pk=['id']  cols=5
+payments  pk=['id']  cols=6
+products  pk=['id']  cols=6
+users  pk=['id']  cols=6
+2026-09-24 09:43:05,741 [INFO] 本次只迁移 8 张指定表（不会搬源库其余表）: edge_empty, edge_nulls, edge_types, order_items, orders, payments, products, users
+2026-09-24 09:43:05,789 [INFO] 导出 biz.edge_empty -> data\export\edge_empty.csv，0 行
+2026-09-24 09:43:05,866 [INFO] 已创建目标表 "demo"."edge_empty"
+2026-09-24 09:43:05,876 [INFO] COPY 写入 "demo"."edge_empty"，rowcount=0
+2026-09-24 09:43:05,883 [INFO] 导出 biz.edge_nulls -> data\export\edge_nulls.csv，4 行
+2026-09-24 09:43:05,899 [INFO] 已创建目标表 "demo"."edge_nulls"
+2026-09-24 09:43:05,908 [INFO] COPY 写入 "demo"."edge_nulls"，rowcount=4
+2026-09-24 09:43:05,915 [INFO] 导出 biz.edge_types -> data\export\edge_types.csv，3 行
+2026-09-24 09:43:05,925 [INFO] 已创建目标表 "demo"."edge_types"
+2026-09-24 09:43:05,935 [INFO] COPY 写入 "demo"."edge_types"，rowcount=3
+2026-09-24 09:43:05,944 [INFO] 导出 biz.order_items -> data\export\order_items.csv，5 行
+2026-09-24 09:43:05,954 [INFO] 已创建目标表 "demo"."order_items"
+2026-09-24 09:43:05,964 [INFO] COPY 写入 "demo"."order_items"，rowcount=5
+2026-09-24 09:43:05,972 [INFO] 导出 biz.orders -> data\export\orders.csv，5 行
+2026-09-24 09:43:05,981 [INFO] 已创建目标表 "demo"."orders"
+2026-09-24 09:43:05,990 [INFO] COPY 写入 "demo"."orders"，rowcount=5
+2026-09-24 09:43:05,998 [INFO] 导出 biz.payments -> data\export\payments.csv，3 行
+2026-09-24 09:43:06,014 [INFO] 已创建目标表 "demo"."payments"
+2026-09-24 09:43:06,023 [INFO] COPY 写入 "demo"."payments"，rowcount=3
+2026-09-24 09:43:06,031 [INFO] 导出 biz.products -> data\export\products.csv，4 行
+2026-09-24 09:43:06,048 [INFO] 已创建目标表 "demo"."products"
+2026-09-24 09:43:06,058 [INFO] COPY 写入 "demo"."products"，rowcount=4
+2026-09-24 09:43:06,064 [INFO] 导出 biz.users -> data\export\users.csv，5 行
+2026-09-24 09:43:06,079 [INFO] 已创建目标表 "demo"."users"
+2026-09-24 09:43:06,089 [INFO] COPY 写入 "demo"."users"，rowcount=5
+2026-09-24 09:43:06,139 [INFO] 校验 edge_empty: count 0/0 checksum match sample_mismatch=0 passed=True
+2026-09-24 09:43:06,155 [INFO] 校验 edge_nulls: count 4/4 checksum match sample_mismatch=0 passed=True
+2026-09-24 09:43:06,168 [INFO] 校验 edge_types: count 3/3 checksum match sample_mismatch=0 passed=True
+2026-09-24 09:43:06,184 [INFO] 校验 order_items: count 5/5 checksum match sample_mismatch=0 passed=True
+2026-09-24 09:43:06,204 [INFO] 校验 orders: count 5/5 checksum match sample_mismatch=0 passed=True
+2026-09-24 09:43:06,221 [INFO] 校验 payments: count 3/3 checksum match sample_mismatch=0 passed=True
+2026-09-24 09:43:06,235 [INFO] 校验 products: count 4/4 checksum match sample_mismatch=0 passed=True
+2026-09-24 09:43:06,251 [INFO] 校验 users: count 5/5 checksum match sample_mismatch=0 passed=True
+2026-09-24 09:43:06,255 [INFO] 报告已写入 results\report.json 和 results\report.md
+2026-09-24 09:43:06,255 [INFO] 迁移校验通过，报告 results\report.md

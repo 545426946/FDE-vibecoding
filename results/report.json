@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-21T09:36:59",
+  "generated_at": "2026-09-24T09:43:06",
   "extra": {
     "source": "127.0.0.1:12306/biz",
     "target": "127.0.0.1:15432/mxadmin",
@@ -193,8 +193,8 @@
       "source_count": 5,
       "target_count": 5,
       "count_match": true,
-      "source_checksum": "a2c5ebe633c1e647",
-      "target_checksum": "a2c5ebe633c1e647",
+      "source_checksum": "5be0d876c08f27bb",
+      "target_checksum": "5be0d876c08f27bb",
       "checksum_match": true,
       "sample_checked": 5,
       "sample_mismatches": [],

@@ -1,6 +1,6 @@
 # MySQL → YMatrix 迁移校验报告
 
-生成时间：2026-09-21T09:36:59
+生成时间：2026-09-24T09:43:06
 
 ## 总览
 
@@ -50,7 +50,7 @@
 | orders | `87fb7ce158827298` | `87fb7ce158827298` | 是 |
 | payments | `196f19dd5b900f3a` | `196f19dd5b900f3a` | 是 |
 | products | `c96de6d5114f1f92` | `c96de6d5114f1f92` | 是 |
-| users | `a2c5ebe633c1e647` | `a2c5ebe633c1e647` | 是 |
+| users | `5be0d876c08f27bb` | `5be0d876c08f27bb` | 是 |
 
 ## 不一致样例
 
