@@ -6,10 +6,10 @@
 
 1. **读结构**：从 MySQL `information_schema` 取列、空值、精度、主键。
 2. **生成 DDL**：用白名单做类型映射，YMatrix 方言补 `DISTRIBUTED BY`。
-3. **搬数据**：源库只读导出 CSV，目标库 `COPY`。默认按表替换，失败不污染源库。
+3. **搬数据**：源库只读导出 CSV，目标库 `COPY FROM STDIN`。目标表已存在时由 `if_exists` 决定：客户库用 `fail`，可丢弃的 Demo 才用 `replace`。失败不改源库。
 4. **校验**：行数 → 规范化 checksum → 主键抽样。三道门都过才算通过。
 
-本地用 Docker 起 MySQL 8.4 和 PostgreSQL 16。YMatrix 走 PostgreSQL 协议，这个拆法能先把映射、空值、精度、失败路径跑完。真正连 YMatrix 时只改连接和 `runtime`，不必重写工具。
+源库 Demo 是 Docker 里的 MySQL 8.4。开发时用社区 PostgreSQL 先跑通映射和失败路径；提交时的目标是 Docker 里的 MatrixDB 4.8.12 community，`dialect` 和 `runtime` 都是 `ymatrix`，`DISTRIBUTED BY` 在这套库上执行过。连的是 PostgreSQL 协议，工具本身不绑定某台机器。
 
 数据流：
 
@@ -17,7 +17,7 @@
 MySQL (只读)
   -> information_schema / SELECT
   -> CSV (\N 表示 NULL，DECIMAL/时间已规范化)
-  -> PostgreSQL COPY  或  YMatrix COPY/mxgate
+  -> YMatrix COPY FROM STDIN
   -> 行数 + checksum + 抽样
   -> results/report.md
 ```
@@ -65,13 +65,13 @@ checksum 用逐行 SHA256 前 8 字节异或，与行顺序无关，可以流式
    - DECIMAL 补齐小数位、DATETIME 截断微秒
    - YMatrix DDL 含分布键，PostgreSQL runtime 会剥掉
    - checksum 与行顺序无关
-2. Docker 集成：`python -m src.cli run-all --results-dir results/pass`
-3. 脏数据：`inject-mismatch` 后 `validate --results-dir results/mismatch`
-4. 连接失败：`demo-conn-fail --port 1`
+2. 在 MatrixDB 4.8.12 上对 8 张指定表做迁移并校验，日志在 `results/report.md`（2026-09-21 09:36:59）
+3. 脏数据：`inject-mismatch` 只改目标库，再 `validate`。日志在 `results/stable-mismatch/report.md`（2026-09-20）
+4. 连接失败：`demo-conn-fail --port 1`，日志在 `results/stable-conn/run.log`
 
 ## 4. 测试结果
 
-以 `sql/mysql_init.sql` 固定数据为准，正常场景 8 张表应全部通过：
+以 `sql/mysql_init.sql` 的固定数据和 `results/report.md` 为准。该次迁移成功 8，失败 0；校验通过 8，未通过 0。各表行数如下，checksum 以报告文件为准，不在这里另写一套：
 
 | 表 | 行数 | 备注 |
 |---|---:|---|
@@ -84,13 +84,11 @@ checksum 用逐行 SHA256 前 8 字节异或，与行顺序无关，可以流式
 | edge_empty | 0 | 空表也必须通过 |
 | edge_types | 3 | UNSIGNED / ENUM / TINYINT |
 
-脏数据场景预期：`products` checksum 失败并给出 `id=10001` 样例；`edge_nulls` 行数 4 对 3。
-
-具体数字以 `results/pass/report.md` 和 `results/mismatch/report.md` 为准，不在本文件里手写无法复现的吞吐。
+脏数据以 `results/stable-mismatch/report.md` 为准：`products` 行数仍是 4 对 4，checksum 不一致，抽样键 `id=10001` 的价格是 `99.90` 对 `99.91`；`edge_nulls` 行数是源 4、目标 3，键 `id=1` 在目标侧缺失。源库没有被回写。
 
 ## 5. 问题和风险
 
-- 本地 PostgreSQL 验证不了分布键倾斜、Segment 木桶效应、mxgate 写入。
+- 分布键已经在 MatrixDB 上执行过，但没有做倾斜、多 Segment 和 mxgate 写入测试。社区 PostgreSQL 也覆盖不了这些。
 - 应用层 checksum 在超大表上会拉全表。生产应加时间窗或按主键分段，并避开业务高峰。
 - ENUM、UNSIGNED、时区如果在客户库大量出现，需要先出映射评审，而不是直接迁。
 - CSV 中转适合本次数据量；客户日增量很大时应改 mxgate / 外部表，工具只保留校验。
@@ -98,7 +96,7 @@ checksum 用逐行 SHA256 前 8 字节异或，与行顺序无关，可以流式
 
 ## 6. 后续改进方向
 
-- 接入真实 YMatrix，对比 `COPY` 与 mxgate 的失败重试和吞吐。
+- `COPY FROM STDIN` 已在 MatrixDB 4.8.12 上跑通。mxgate 对比和多 Segment 压测这次没做。
 - 有稳定水位线的表补增量；无水位线的表继续全量加校验。
 - 把类型映射风险做成「阻断 / 告警」两级，阻断项现场必须客户确认。
 - 校验任务按主键范围拆分，避免一次扫过大表。

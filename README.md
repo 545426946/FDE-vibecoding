@@ -225,13 +225,24 @@ python -m src.cli validate --config config.yaml --results-dir results/run
 
 ---
 
-## 7. 本地 Docker 体验环境（可选）
+## 7. 依赖：Python、Docker、数据库
 
-若没有现成的 MySQL / YMatrix，可用仓库里的 Compose 和脚本起一套 **仅供 Demo** 的库，再把 yaml 指过去。这不是工具的运行前提。
+本工具没有调用云服务。运行依赖是本机 Python，以及你要连的 MySQL 和 YMatrix。下面是这次 Demo 实际用的环境。
 
-- 源库示例：`docker compose up -d` 后的 MySQL，默认 `127.0.0.1:12306` / `biz` / `root` / `demo`。示例数据：`sql/mysql_init.sql`（可重复执行）。本机若 13306 被 Windows Hyper-V 保留，不要再用该端口。
-- 目标库示例：自行准备的 MatrixDB 容器，把 `target.host/port` 写成你映射到本机的地址。容器重启后数据库进程通常要再 `gpstart`，以你的部署方式为准。
-- Demo 为了可重复，示例配置里 `if_exists` 可能是 `replace`；换成远程库时务必改成 `fail`。
+| 依赖 | 这次怎么来的 |
+|---|---|
+| Python 3.10+ | `requirements.txt`：`pymysql`、`psycopg2-binary`、`PyYAML`、`pytest`。用项目里的 `.venv`，不要用 Windows 自带的 Python 3.7 |
+| 源库 | `docker compose` 启动官方镜像 `mysql:8.4`，容器 `mx-migrate-mysql`，本机 `127.0.0.1:12306`，库 `biz`，用户 `root` / `demo`。样例数据是 `sql/mysql_init.sql` |
+| 目标库 | 镜像 `matrixdb/centos7_demo`（MatrixDB 4.8.12 community）。Docker Hub 直连超时，本机从镜像站 `docker.1ms.run/matrixdb/centos7_demo` 拉取，摘要与 `matrixdb/centos7_demo` 相同。容器名 `mx-ymatrix` |
+| 图形界面 | Python 标准库 `tkinter`，没有额外安装包 |
+
+`docker-compose.yml` 只启动 MySQL。YMatrix 不在 Compose 里，需要单独起容器。容器起来后还要在里面执行 `scripts/start_ymatrix.sh`（已复制为容器内 `/opt/start_ymatrix.sh`），否则数据库进程不会监听。
+
+迁表连的是容器内 **5432**，映射本机 **15432**，库 `mxadmin`，用户 `mxadmin` / `changeme`。同一容器里还有 **5433**，MatrixUI（本机 **8240**）连的是这套，看不到 15432 上的表。
+
+`config.yaml` 含密码，已写入 `.gitignore`，仓库里只提交 `config.example.yaml`。示例里 `if_exists` 是 `fail`。本地反复演示时用过 `replace`，只针对可丢弃的 Demo 库。
+
+换远程库时，改 yaml 的 host/port 即可，不必使用上述 Docker。
 
 作业附带的异常演示（会改**目标库**数据，不要对客户库执行）：
 
